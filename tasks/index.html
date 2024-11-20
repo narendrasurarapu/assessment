@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Interactive Feature</title>
     <style>
+        /* Body styling */
         body {
             font-family: 'Arial', sans-serif;
             margin: 0;
@@ -18,6 +19,7 @@
             transition: background-color 0.3s ease;
         }
 
+        /* Container styling */
         .container {
             text-align: center;
             background-color: rgba(255, 255, 255, 0.9);
@@ -27,6 +29,7 @@
             width: 300px;
         }
 
+        /* Heading styling */
         h1 {
             font-size: 24px;
             color: #333;
@@ -34,6 +37,7 @@
             transition: opacity 0.3s ease;
         }
 
+        /* Button styling */
         button {
             padding: 12px 24px;
             font-size: 16px;
@@ -45,16 +49,19 @@
             transition: background-color 0.3s ease, transform 0.3s ease;
         }
 
+        /* Button hover effect */
         button:hover {
             background-color: #0056b3;
             transform: scale(1.05);
         }
 
+        /* Back button styling */
         #backButton {
             background-color: #28a745;
             margin-top: 20px;
         }
 
+        /* Back button hover effect */
         #backButton:hover {
             background-color: #218838;
         }
@@ -62,6 +69,7 @@
 </head>
 
 <body>
+    <!-- Main container with heading and buttons -->
     <div class="container">
         <h1 id="heading">Click the Button to Change Me!</h1>
         <button id="changeTextButton">Click Me</button>
@@ -69,10 +77,12 @@
     </div>
 
     <script>
+        // Select elements
         const changeTextButton = document.getElementById('changeTextButton');
         const backButton = document.getElementById('backButton');
         const heading = document.getElementById('heading');
 
+        // Array of possible interactive texts
         const interactiveTexts = [
             'Welcome! What do you want to do next?',
             'You clicked the button again! What a surprise!',
@@ -86,32 +96,32 @@
             'Let’s keep it rolling!'
         ];
 
-        // Function to get random text
+        // Function to get random text from the array
         function getInteractiveText() {
             const randomIndex = Math.floor(Math.random() * interactiveTexts.length);
             return interactiveTexts[randomIndex];
         }
 
-        // Change text and hide the main button
+        // Change text and hide the "Click Me" button
         changeTextButton.addEventListener('click', () => {
-            heading.style.opacity = 0;
+            heading.style.opacity = 0;  // Fade out the heading
 
             setTimeout(() => {
-                heading.textContent = getInteractiveText();
-                heading.style.opacity = 1;
+                heading.textContent = getInteractiveText();  // Set new random text
+                heading.style.opacity = 1;  // Fade in the new text
 
-                changeTextButton.style.display = 'none';
-                backButton.style.display = 'inline-block';
+                changeTextButton.style.display = 'none';  // Hide "Click Me" button
+                backButton.style.display = 'inline-block';  // Show "Back" button
             }, 300);
         });
 
-        // Show original text and button again
+        // Show original text and button again when "Back" button is clicked
         backButton.addEventListener('click', () => {
-            heading.textContent = 'Click the Button to Change Me!';
-            heading.style.opacity = 1;
+            heading.textContent = 'Click the Button to Change Me!';  // Reset text
+            heading.style.opacity = 1;  // Ensure the text is visible
 
-            backButton.style.display = 'none';
-            changeTextButton.style.display = 'inline-block';
+            backButton.style.display = 'none';  // Hide "Back" button
+            changeTextButton.style.display = 'inline-block';  // Show "Click Me" button
         });
     </script>
 </body>
